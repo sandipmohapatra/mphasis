@@ -133,16 +133,26 @@ Contraints :-
 
 4)check :- if we declare a column as check it should fulfil the condition.
 
+5)foreign key:-it will refer to another table .it is also called child table.we can enter those data which are present in the parent table. 
+
+
 constraints
 ---------------------
+parent
+------------
 create table bank(accno number primary key,name varchar2(30) unique,address varchar2(30) not null,bal number check (bal > 500));
 ----------------------
+child
+----------------------
+create table customer(accno number references bank,withdraw number,deposite number);
 
+-----------------------------------------------------------------
+insert into bank values(103,'sunil','bangalore',1200);
 
-https://github.com/sandipmohapatra/mphasis
+insert into customer(accno,withdraw) values(101,500);
 
+truncate table customer;
 
-
-
-
+alter table customer modify withdraw number(9,2)--->  1234567.99
+-----------------------------------------------------------------------------------------------------
 
