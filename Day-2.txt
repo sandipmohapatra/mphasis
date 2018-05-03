@@ -23,7 +23,7 @@ select * from employee where salary >= 20000.5;
 select * from employee where salary <= 20000.5;
 select * from employee where salary = 20000.5;
 select * from employee where salary != 20000.5;
-------------------------------------------
+--------------------------------------------------------------------------------------------------
 select * from employee where salary between 20000 and 40000;
 select * from employee where salary in(20000.5,40000.5);
 
@@ -31,14 +31,14 @@ select * from employee where salary > 20000 and name like 'k%';
 select * from employee where salary > 20000 and name like '%n';
 select * from employee where salary > 20000 or name like '%l';
 select * from employee where salary > 20000 or name not like '%l';
----------------------------
+---------------------------------------------------------------------------------------------------
 concate
 ---------------
 select name ||' having empno '|| empno ||' draw a salary of '|| salary from employee;  
 
 select name ||' having empno '|| empno ||' draw a salary of '|| salary from employee where name='sandip';  
 
-------------------------------------------------
+------------------------------------------------------------------------------------
 Table
 ------------
 1)TL (Transaction language) :- select
@@ -52,9 +52,82 @@ They are temporary .if we donot commit we can rollback to previous state.
 
 5)TCL (Transaction control language) :- commit,rollback,savepoint
 
--------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+https://github.com/sandipmohapatra/mphasis
+---------------------------------------------------------------------------------------
 
+string function
+------------------------
+1)select concat('Hello','students') from dual;
 
+2)select substr('Hello students',1,5) from dual;
+
+select length('Hello students') from dual;
+
+select instr('Hello students','s') from dual;
+
+select lpad(salary,10,'*') from employee;
+
+select rpad(salary,10,'*') from employee;
+
+select trim('H' from 'Hello World') from dual; 
+
+select rtrim('    Hello World    ') from dual; 
+
+select ltrim('    Hello World    ') from dual; 
+
+select round(45.925,2) from dual;
+
+select trunc(45.925,2) from dual;
+select mod(45,2) from dual;
+select abs(-9) from dual;
+select floor(45.555) from dual;
+select ceil(45.555) from dual;
+select cos(0) from dual;
+select tan(0) from dual;
+---------------------------------------------------------------------------
+aggregate function
+-------------------------
+select sum(salary) from employee;
+select avg(salary) from employee;
+select max(salary) from employee;
+select min(salary) from employee;
+select count(salary) from employee;
+--------------------------------------------------------------
+Date function
+----------------------------
+it is stored as a number in the database .so we can add date,subtract date .
+
+example:-
+1)select months_between('1-jan-2018','1-may-2018') from dual;
+
+2)select to_char(sysdate) from dual;
+
+3)select sysdate from dual;
+
+4)select last_day(sysdate) from dual;
+
+5)select to_char(sysdate,'DD Month yyyy')from dual;
+
+6)select to_char(sysdate,'DD Month yyyy HH:MI:SS')from dual;
+
+7)select to_char(sysdate,'DD Month yyyy HH:MI:SS AM')from dual;
+
+8)select to_char(doj,'DD Month yyyy HH:MI:SS AM')from employee;
+
+------------------------------------------------------------------------------------------
+create table employee1 as select * from employee;
+
+insert into employee values(106,'deepak','4-may-2018',35000);
+
+select * from employee minus select * from employee1;
+select * from employee intersect select * from employee1;
+select * from employee union select * from employee1;
+select * from employee union all select * from employee1;
+---------------------------------------------------------------------------------------------
+
+select empno,name,doj,salary,salary*12 as annual_salary from employee;
+--------------------------------------------------------------------------------------------
 
 
 
