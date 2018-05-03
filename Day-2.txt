@@ -1,0 +1,75 @@
+arithmatic operator       (+,-,*,/)
+--------------------------------------------
+
+create table employee(empno number,name varchar2(30),doj date,salary number(9,2)); 
+
+insert into employee values(101,'sandip','3-may-2018',50000.50);
+
+select empno,name,doj,salary from employee;
+
+select empno,name,doj,salary+1000 from employee;
+
+select empno,name,doj,salary-1000 from employee;
+
+select empno,name,doj,salary*12 from employee;
+
+select empno,name,doj,salary/30 from employee;
+
+comparative operator
+---------------------------
+select * from employee where salary > 25000;
+select * from employee where salary < 25000;
+select * from employee where salary >= 20000.5;
+select * from employee where salary <= 20000.5;
+select * from employee where salary = 20000.5;
+select * from employee where salary != 20000.5;
+------------------------------------------
+select * from employee where salary between 20000 and 40000;
+select * from employee where salary in(20000.5,40000.5);
+
+select * from employee where salary > 20000 and name like 'k%';
+select * from employee where salary > 20000 and name like '%n';
+select * from employee where salary > 20000 or name like '%l';
+select * from employee where salary > 20000 or name not like '%l';
+---------------------------
+concate
+---------------
+select name ||' having empno '|| empno ||' draw a salary of '|| salary from employee;  
+
+select name ||' having empno '|| empno ||' draw a salary of '|| salary from employee where name='sandip';  
+
+------------------------------------------------
+Table
+------------
+1)TL (Transaction language) :- select
+
+2)DML(Data manipulation language) :- insert,update,delete
+They are temporary .if we donot commit we can rollback to previous state.
+
+3)DCL (data control language) :- grant,revoke
+
+4)DDL (data defination language) :- create,alter,drop,truncate
+
+5)TCL (Transaction control language) :- commit,rollback,savepoint
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
