@@ -128,11 +128,38 @@ select * from employee union all select * from employee1;
 
 select empno,name,doj,salary,salary*12 as annual_salary from employee;
 --------------------------------------------------------------------------------------------
+rename
+--------------
+alter table employee rename column DOJ to date_of_Join;
+
+select * from employee;
+------------------------------------------------------------
+group by
+-------------------------
+alter table employee add dept varchar2(20);
+
+select * from employee;
+
+update employee set dept='sales' where empno in(104,105);
+
+select sum(salary) from employee group by dept;//total salary of purchase dept and sales dept.
+
+select sum(salary) from employee group by date_of_join;
+
+select sum(salary) from employee group by dept having dept='sales';
+
+select sum(salary) from employee group by dept having dept='purchase';
+
+select dept from employee group by dept having sum(salary) > 17000;
+-------------------------------------
+
+view :- 
+---------------
 
 
+connect to hr/hr
 
-
-
+create a table ....................................
 
 
 
