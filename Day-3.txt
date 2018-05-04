@@ -34,13 +34,49 @@ insert into loc values(104,'India');
 select * from loc;
 
 join
-----------------------------
+--------------------------------------------------------------------------------------------------
 inner or equijoins :- in this type of join one column should be common in both the tables and they should have parent and child relation ship.
-----------------------------
+--------------------------------------------------------------------------------------------
 select a.empno,a.name,a.salary,a.address,b.loc from employee a,loc b where a.empno=b.empno;
 
 view
-------
+-----------------------
 create view tabs as select a.empno,a.name,a.salary,a.address,b.loc from employee a,loc b where a.empno=b.empno;
 
--------------------------
+----------------------------------------------------------------
+Task
+----------
+create a table bank with columns accno,name,address,DOA
+create a table trans with column accno,bal,deposite,withdraw,final bal.
+display the final status by combining both tables.
+* foreign key can be refered to a primary key column only.
+------------------------------------------------------------------------------------------------
+create table bank(accno number primary key,name varchar2(30),address varchar2(30));
+
+insert into bank values(103,'sam','hyderabad');
+
+create table trans(accno number references bank,bal number(9,2),withdraw number(9,2) default 0,deposite number(9,2) default 0,finalbal number(9,2));
+
+insert into trans(accno,bal,withdraw) values(101,5000,1000);
+insert into trans(accno,bal,deposite) values(103,5000,3000);
+
+select * from trans;
+
+update trans set finalbal=bal-withdraw where accno=101;
+
+update trans set finalbal=bal+deposite;
+
+
+select a.accno,a.name,a.address,b.bal,b.withdraw,b.deposite,b.finalbal from bank a,trans b where a.accno=b.accno;
+---------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
