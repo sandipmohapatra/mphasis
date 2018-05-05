@@ -1,0 +1,85 @@
+loop in c ,c++ or java
+-------------------------------------------------------
+for(i=1;i<=10;i++)
+i=1        --->starting point
+i<=10    --->condition/end point
+i++        --->increment (i+1)
+--------------------------------------------------------	
+oracle
+------------------------------------
+declare
+i number;
+begin
+for i in 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+-------------------------------------------------------
+declare
+i number;
+begin
+for i in 1..10 
+loop
+if mod(i,2)=0 then
+dbms_output.put_line(i);
+else
+null;
+end if;
+end loop;
+end;
+-------------------------------------------------
+create table circle(radius number,area number);
+
+declare
+pi constant number(4,2):=3.14;
+radius number;
+area number;
+begin
+for radius in 5..10 loop
+area:=pi*power(radius,2);
+insert into circle values(radius,area);
+end loop;
+end;
+
+select * from circle;
+------------------------------------------------------------------------------------------------------------
+subquery :- It query within a query.
+
+a subquery is a select statement that is embedded in a clause of another select statement.
+
+example :- w.a.q to find persons who are getting salary less than amit.
+
+select name,salary from employee where salary < (select salary from employee where name='amit'); 
+
+*first the inner query will execute then the outer query will execute.
+
+
+i.e :- select name,salary from employee where salary < 5000;
+
+-----------------------------------------------------------------------------------------------------------
+
+select * from employee;
+
+select distinct salary from employee; 
+
+select * from employee order by salary asc;
+
+select * from employee order by salary desc;
+
+select * from employee order by name asc;
+
+select * from employee where rownum<=2;
+
+---------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
