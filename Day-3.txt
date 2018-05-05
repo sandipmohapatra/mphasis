@@ -62,13 +62,202 @@ insert into trans(accno,bal,deposite) values(103,5000,3000);
 
 select * from trans;
 
-update trans set finalbal=bal-withdraw where accno=101;
-
-update trans set finalbal=bal+deposite;
+update trans set finalbal=bal+deposite-withdraw;
 
 
 select a.accno,a.name,a.address,b.bal,b.withdraw,b.deposite,b.finalbal from bank a,trans b where a.accno=b.accno;
 ---------------------------------------------------------
+Normalization:- makes easy to maintain the data.other wise it will be difficult for the database administrator to maintain the data.
+--------------------------
+First Normalization:- All the attributes in a relation must have atomic domains.
+The values in an atomic domain are indivisible units.Each attribute must contain only a single value from its predefined domain. 
+------------------------------------------------------
+course 		|  content
+------------------------------------------------------
+programming	| java,c++
+web		| html,php,asp
+------------------------------------------------------
+Re-arrange
+------------------------------------------------------
+course 		|  content
+------------------------------------------------------
+programming	| java
+programming	| c++
+web		| html
+web		| php
+web		| asp
+------------------------------------------------------
+Composite key 
+---------------------------
+a composite key is a primary key composed of multiple columns used to identify a record uniquely.
+----------------------------------------------------------------------------------------------------
+name 	|  address    	|email 
+------------------------------------------------
+sandip	| bangalore 	|sandip@gmail.com
+sandip	| hyderabad		|sandip.k@gmail.com
+sandip	| hyderabad		|sandip.m@yahoo.com
+
+------------------------------------------------------------------------------
+names are common so we require name,address,email to identify a record uniquely.
+------------------------------------------------------------------------------
+Second Normalization
+----------------------------------
+we should have 1st normalization.
+The columns are dependent on each other .The second normalization doesn't allow dependency.
+----------------------------------------------------------------------------------------
+empid   |	name 	|  address    	|email 
+----------------------------------------------------------------------------------------
+101      |	sandip	| bangalore 	|sandip@gmail.com
+102      |	sandip	| hyderabad		|sandip.k@gmail.com
+103      |	sandip	| hyderabad		|sandip.m@yahoo.com
+ 
+----------------------------------------------------------------------------------
+
+proj_id 	| proj_name 	| empid
+-----------------------------------------------------------
+p1	|xyz		|101
+p2	|pqr		|102
+p3	|abc		|103
+
+--------------------------------------------------------------------------------------------------------
+Third Normalization
+---------------------------------------
+1)we should have 2nd normalization.
+2)should not have any functional dependencies.
+
+proj_id 	| proj_name 	| empid
+-----------------------------------------------------------
+p1	|xyz		|101
+p2	|pqr		|102
+p3	|abc		|103
+p4	|asd		|101
+
+empid 	|name 	 
+------------------------------------
+101	|sandip		
+102	|sandip		
+103	|sandip
+
+empid 	|email 	 
+------------------------------------
+101	|sandip@gmail.com		
+102	|sandip.k@gmail.com		
+103	|sandip.m@yahoo.com	
+
+empid 	|address	 
+------------------------------------
+101	|bangalore		
+102	|hyderabad		
+103	|hyderabad	
+
+
+--------------------------------------------------------------------------------------
+PL-SQL :- programming language.
+-----------------------------------------------------
+declare variable
+begin
+exception handling
+end
+-----------------------------------------------
+example:-
+--------------------
+declare
+a number:=10;
+b number:=20;
+c number;
+begin
+c:=a+b;
+dbms_output.put_line('the result is '||c);
+end;
+----------------------------------------------------------------------
+declare
+a number:=10;
+b number:=20;
+begin
+if(a>b)then
+dbms_output.put_line('the greatest is '||a);
+else
+dbms_output.put_line('the greatest is '||b);
+end if;
+end;
+--------------------------------------------------------------------------------------
+declare
+a number:=10;
+b number:=20;
+c number:=30;
+begin
+if(a>b and a>c)then
+dbms_output.put_line('the greatest is '||a);
+elsif(b>a and b>c)then
+dbms_output.put_line('the greatest is '||b);
+else
+dbms_output.put_line('the greatest is '||c);
+end if;
+end;
+------------------------------------------------------------------------------
+declare 
+x number;
+y number;
+z number;
+begin
+x:=&x;
+y:=&y;
+z:=x+y;
+dbms_output.put_line('the sum is '||z);
+end;
+---------------------------------------------------------------------------------
+PLSQL ------Dynamic entry
+---------------------------------------------------------------------------------
+w.a.p to enter data of a students
+rollno,name,address
+phy,chem,math
+find sum,avg,grade
+if(avg>70)--------->first
+if(avg>60)--------->second
+if(avg>50)--------->third
+else
+fail
+--------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
