@@ -92,9 +92,55 @@ type of index:-
 1)unique index:-the oracle server create automatically this index when you define a column in a table to have primary key or  a unique key constraint.The name of the index will be same as the name given to the constraint.
 2)non unique index:-we create a foreign key column index for a join in a query to improve retrieval speed.
 exaple:- create index xyz on employee(name);  
------------------------------------------------------
+---------------------------------------------------------------------------------------------
+Types of Joins
+------------------------
+1)inner or equijoin
+2)non-equijoin
+3)outer joins
+i)left outer join
+ii)right outer join.
+---------------------------------------------------------------------------------------------------
+1)inner or equijoin :-
+one column will be common in each of the table.
 
+2)non-equijoin :-
+no column will be common in each of the table.
+example :-
+employee (empno,name,salary)
+job(job,low_sal,high_sal) 
 
+select * from employee
+
+create table job(job varchar2(30),low_sal number,high_sal number)
+
+insert into job values('manager',45000,55000);
+insert into job values('developer',35000,45000);
+insert into job values('fresher',25000,35000);
+
+select a.empno,a.name,a.salary,b.job from employee a,job b where a.salary between b.low_sal and b.high_sal; 
+
+------------------------------------------------------------------------------------------------
+desc employee;
+create table employee12 as select * from employee;
+desc employee12
+select * from employee12;
+create table location (empno number,deptno number,deptloc varchar2(20));
+insert into location values(101,10,'india');
+insert into location values(102,20,'UK');
+insert into location values(103,30,'US');
+insert into location values(104,40,'Iran');
+insert into location values(105,50,'Pakistan');
+insert into location values(106,60,'Artica');
+--------------------------------------------------------------
+right outer join
+---------------------------
+select a.empno,a.name,a.salary,a.address,b.deptno,b.deptloc from employee12 a,location b where a.empno=b.empno(+);
+
+left outer join
+------------------------------
+select a.empno,a.name,a.salary,a.address,b.deptno,b.deptloc from employee12 a,location b where a.empno(+)=b.empno;
+------------------------------------------------------------------------------------------------------
 
 
 
