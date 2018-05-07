@@ -1,0 +1,135 @@
+sequence :- 
+
+bank(accno),class(rollno),emp(empid)
+
+it is auto increment.we need not have to insert the value.we have to mention the starting point and the end point .we can declare the field as primary key.
+
+create sequence xyz increment by 1 start with 1 maxvalue 999 nocache nocycle.
+
+  create sequence incre increment by 1 start with 1 maxvalue 999 nocache nocycle
+
+create table class(rollno number,name varchar2(30),address varchar2(30));
+
+insert into class values(incre.nextval,'sunil','banglore');
+
+select * from class;
+
+select incre.nextval from dual;
+
+select incre.currval from dual;
+
+drop sequence incre;
+-------------------------------------------------------------------------------------------------------
+function:- A function is a pl/sql block which return a single value.
+
+example:-
+
+step 1:
+create or replace function add1(i number,j number) return number is
+begin
+return i+j;
+end;
+
+-----------------------------------------------------
+step 2:
+
+declare 
+k number;
+begin
+k:=add1(5,6);
+dbms_output.put_line('the sum is '||k);
+end;
+------------------------------------------------------
+or
+select add1(6,7) from dual;
+-------------------------------------------------------
+create or replace function empdesign(salary number) return varchar2 is
+begin
+if(salary<=10000) then
+return 'clerk';
+elsif(salary<=20000) then
+return 'worker';
+elsif(salary<=30000) then
+return 'manager';
+elsif(salary<=40000) then
+return 'officer';
+else
+return 'president';
+end if;
+end;
+---------------------------------------------------------------------
+select empdesign(35000) from dual;
+
+---------------------------------------------------------------------------------
+example 3
+--------------
+create table person (person_id number primary key,name varchar2(30));
+
+create table person_salary(salaryid number primary key,person_id number references person, salary number,month varchar2(30));
+-------------------------------------------------------------------------------
+create or replace function cal_tax(personid number) return number is
+tax number;
+begin
+tax:=0;
+select (sum(salary)*30)/100 into tax from person_salary where person_id=personid;
+return tax;
+end;
+---------------------------------------------------------------------------
+
+create table person (person_id number primary key,name varchar2(30));
+
+create table person_salary(salaryid number primary key,person_id number references 
+person, salary number,month varchar2(30),year varchar2(10));
+
+insert into person_salary values(3,101,50000,'feb','2018');
+
+create or replace function cal_tax(personid number) return number is
+tax number;
+begin
+tax:=0;
+select (sum(salary)*30)/100 into tax from person_salary where person_id=personid;
+return tax;
+end;
+
+select p.name,sum(s.salary),s.year,cal_tax(101) as tax from person p,person_salary s where p.person_id=s.person_id group by p.name,s.year;
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
