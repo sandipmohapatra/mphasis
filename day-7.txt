@@ -1,0 +1,117 @@
+example 1:- %type
+----------------------------------------
+declare 
+name varchar2(30) not null:='Laxmi';
+surname name%type :='Reddy';
+begin
+dbms_output.put_line('the name  is = '|| name);
+dbms_output.put_line('the surname  is = '|| surname);
+end;
+---------------------------------------------------------------------------------------------------------
+example 2:-
+--------------------------
+declare
+s1 employee.salary %type;
+begin
+select salary into s1 from employee where name='sunil';
+if(s1 < 40000)then
+update employee set salary=(salary+10000) where name='sunil';
+end if;
+end;
+---------------------------------------------------------------------------------------------
+Exception Handling
+----------------------------------
+An error occurs during the program execution is called exception in PL/SQL.
+we can catch the error by using exection block.
+There are 2 types of exception
+---------------------------------------------
+1)system-defined exception
+2)user-defined exception.
+--------------------------------------------------------------------
+syntax:-
+---------------
+declare
+< variables >
+begin
+<execution command>
+exception
+when exception then
+<print>
+end;
+----------------------------------------------------------------------
+example :-
+1)NO_DATA_FOUND
+2)TOO_MANY_ROWS
+3)ZERO_DIVIDE
+4)DUP_VAL_ON_INDEX
+------------------------------------------------------------------------------
+ZERO DIVIDE ERROR
+-------------------------------------------
+declare
+n number;
+begin
+n:=10/0;
+dbms_output.put_line(n);
+exception
+when ZERO_DIVIDE then
+dbms_output.put_line('this is divide by zero error');
+end;
+----------------------------------------------------------------------------
+NO_DATA_FOUND
+----------------------------------------
+declare
+empid number:=104;
+ename varchar2(30);
+begin
+select name into ename from employee where empno=empid;
+dbms_output.put_line('the name is '||ename);
+exception
+when NO_DATA_FOUND then
+dbms_output.put_line('This empno doesnt exist');
+end;
+------------------------------------------------------------------------------------------------
+DUP_VAL_ON_INDEX
+--------------------------------------------
+begin
+insert into employee(empno,name,salary) values(101,'john',45000);
+dbms_output.put_line('1 row inserted');
+exception
+when DUP_VAL_ON_INDEX then
+dbms_output.put_line('Primary key cannot contain duplicate records');
+ end;
+--------------------------------------------------------------------------------------------------
+user defined Exception
+--------------------------------------------------------
+declare
+emp_no number:=106;
+begin
+delete from employee where empno=emp_no;
+if sql%notfound then
+raise_application_error(-20500,'This is not an valid employee');
+end if;
+--------------------------------------OR----------------------------------------------------
+exception
+when NO_DATA_FOUND then
+dbms_output.put_line('This empno doesnt exist');
+end;
+--------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
