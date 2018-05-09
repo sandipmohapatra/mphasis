@@ -1,0 +1,48 @@
+Procedure
+-------------------------
+it is a pl/sql code which execute when called but they donot return any value.
+----------------------------------------------------------------
+example 1:-
+--------------------
+step 1:
+create or replace procedure del_manager is
+begin
+delete from employee where design='manager';
+commit;
+end;
+----------------------------------
+step 2:
+begin
+del_manager;
+end;
+--------------------------------------------------
+example 2:-
+create or replace procedure add_number(i number default 0,j number default 0,k number default 0) is 
+begin
+dbms_output.put_line('result :' ||(i+j+k));
+end;
+---------------------------------
+begin
+add_number(30,20);
+end;
+----------------------------------------------------------- 
+Trigger
+----------------------
+trigger is a pl/sql code which execute when the condition is satisfied.
+
+Trigger timing :- before,after,instead of
+
+Trigger Event :- insert,update,delete
+------------------------------------------------------------------------------------------
+example:-
+create or replace trigger t1
+before insert on employee
+begin
+if(to_char(sysdate,'dy') in ('tue','sat','sun')) or  (to_char(sysdate,'HH24:MI') not between '08' and '15')then raise_application_error(-20500,'you cannot insert data on tue,sat,sun and in other days between 8 to 3 pm');
+end if;
+end;
+
+-------------------------------------------------------------------------------------------
+
+insert into employee values(101,'sandip',5000,'bangalore','manager');
+-------------------------------------------------------------------------------------------
