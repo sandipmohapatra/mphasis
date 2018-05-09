@@ -96,11 +96,44 @@ dbms_output.put_line('This empno doesnt exist');
 end;
 --------------------------------------------------------------------------------------------
 
+cursor
+----------
+It is used when we want to retrieve more than one record from the database.
+There are 2 types of cursor.
+1)implicit cursor.
+2)explicit cursor.
 
+----------------
+1)implicit cursor :- oracle create and open a cursor for every DML statement.programmer donot have any control on it. 
+2)explicit cursor :-programer has control on it. a cursor can have more than one row depending on the query. 
 
+activeset :- it is a group of rows which are hold in the memory area of the cursor.
+steps :-
+1)declare (memory allocation)
+2)open (activeset is created)
+3)manipulation(loop)
+4)close(release the memory)
+-----------------------------------------------------------------
+cursor attribute
+----------------------
+1)%isopen :- it is true when the activeset contain data.it is false when the activeset doesnot contain data.
+2)%found :- to know if the cursor pointer points to a valid row.
+3)%notfound :- to know if the cursor pointer points to a end of the row.
+4)%rowcount :- it will retrive the position of the pointer within the activeset.
 
-
-
+-------------------------------------------------------------------------------------------
+declare
+cursor c is select name from employee;
+n varchar2(30);
+begin
+open c;
+loop
+fetch c into n;
+exit when c %notfound;
+dbms_output.put_line(c %rowcount||'   '||n);
+end loop;
+end;
+-----------------------------------------------------------------------------------------------------   
 
 
 
