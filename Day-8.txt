@@ -1,0 +1,100 @@
+Table Partition
+-----------------------
+A table is by default stored into a physical unit called segment which is allocated inside a file called tablespace.
+
+if a table consists of huge amount of data we can store the complete table in different segments which are allocated on different tablespace which are created on different drives.
+
+if any one of the file is currupted only some part of the table is effected.
+
+create tablespace t1 datafile 'c:\a.dbf' size 10m;
+create tablespace t2 datafile 'd:\b.dbf' size 10m;
+create tablespace t3 datafile 'e:\c.dbf' size 10m;
+
+create table bank(accno number,name varchar2(30),balance number partition by range(balance) 
+(partition p1 values less than(10000) tablespace t1,
+partition p2 values less than(50000) tablespace t2,
+partition p3 values less than(150000) tablespace t3);
+
+------------------------------------------------------------------------------------------------------------
+DBA :- database administrator
+-------------------------------------------------------------------------------------------------------------
+cluster :- a cluster is a memory area reserved inside the table space in order to accomodate contents of more than one table which are usually related .
+
+cluster increases the speed of data retrieval whenever a join of related table is employed.
+
+steps:-
+1)create a cluster
+2)place an index on cluster 
+3)create the neccessary table in a cluster.
+
+----------------------------------------------------------------------------------------------
+example :-
+----------------------------------------------------------------------------------------------
+1)create cluster c1(d number);
+
+2)create index cidx on cluster c1;
+ 
+3)create table employee (empno number,ename varchar2(30),salary number,deptno references deptno(deptno)) clustor c1(deptno);
+-----------------------------------------------------------------------------------------------
+
+ How to create user in Oracle
+---------------------------------------------
+1)create user hr identified by hr1;
+drop user hr;
+A DBA can create the user.
+2)grant DBA to hr;
+3)grant select,insert,update to hr;
+4)revoke select from hr;
+-------------------------------------------------------------------------------------------------
+user and schema are inter-related when we create a user ,oracle will create a schema by the same name.
+
+a schema contains sql and pl/sql objects like table,views,stored procedures,function,package,tigger,cursor.
+------------------------------------------------------------------------------------
+Oracle 12 Arctitecture
+-----------------------------------
+When a database server start oracle allocates a memory area called the system global area(SGA).Also some starts oracle processes.
+
+SGA + oracle process = oracle instance.
+
+The instance background process are
+1)database writer(DBWR):- write changes from the database buffer to the data base.
+2)log writer(LGWR):-write changes from redolog buffer to redolog files.
+3)checkpoint(CKPT):- they are the save points put to database.
+4)system monitor(SMON):- checks the consistency of the database.it also initiates recovery of the database .
+5)process monitor(PMON):- cleans up resources if one of the oracle process fails.
+
+SGA contains the following data structure
+1)database buffer cache:- most recently used data.
+2)redolog buffer :- keep track of the changes made to the database.
+3)shared pool :- store most recent excuted sql statement.
+4)java pool:- java code are stored.
+5)large pool:- store large memory structure like vedio files,backup and recovery files.
+6)data dictionary cache:- it conatins most recently used database files,tables,index,columns,users,privileges and other database objects.
+
+Oracle database includes these files:-
+---------------------------------------------------------------
+control files:-varify the integrity of the database.
+datafiles:- conatins database,tables,index,rollback segment and temporary segment.
+password files:- authenticates privileged database users.
+-------------------------------------------------------------------------------------------------
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
