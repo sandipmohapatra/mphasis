@@ -1,0 +1,61 @@
+first.html
+-----------------
+<html>
+<body bgcolor=cyan>
+<h1><center>Employee Registration Page</center></h1><hr>
+<form action="second" method=get>
+<table>
+<tr><td>Enter empno<td><input type=text name=t1 size=20 required></tr>
+<tr><td>Enter empname<td><input type=text name=t2 size=20 required></tr>
+<tr><td>Enter email<td><input type=text name=t3 size=20 required></tr>
+<tr><td>Enter phoneno<td><input type=text name=t4 size=20 required></tr>
+<tr><td><td><input type=submit value=submit></tr>
+</table>
+</form>
+</body>
+</html>
+----------------------------------------------
+second.java
+
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.annotation.WebServlet;
+@WebServlet("/second")
+public class second extends GenericServlet 
+{
+public void init()
+{
+	System.out.println("init");
+}
+	@Override
+	public void service(ServletRequest req, ServletResponse res)	throws ServletException, IOException 
+			{
+		PrintWriter pw=res.getWriter();
+		res.setContentType("text/html");
+		String empno=req.getParameter("t1");
+		String name=req.getParameter("t2");
+		String email=req.getParameter("t3");
+		String phoneno=req.getParameter("t4");
+		pw.println("The empno is "+empno);
+		pw.println("<br>");
+		pw.println("The name is "+name);
+		pw.println("<br>");
+		pw.println("The email is "+email);
+		pw.println("<br>");
+		pw.println("The phone no is "+phoneno);
+		try
+		{
+			
+		}
+		catch(Exception ae)
+		{
+			ae.printStackTrace();
+		}
+	}
+	public void destroy()
+	{
+		System.out.println("destroy");
+	}
+	
+	}
+-----------------------------------------
