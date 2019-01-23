@@ -1,0 +1,345 @@
+
+
+Final-we can declare a class as final.A variable as final.A method as final.
+
+1-If we declare a class as final we cannot inhert it.
+2-If we declare a variable as final we cannot change it.
+3-if we declare a method as final we cannot override it.
+---------------------------
+Polymorphism are 2 types:-
+------------------------------------
+Function overloading-when the function have the same name but the return type and the parameter has different data type its called as function overloading.
+Example-
+int sum(int a,intb);
+Float sum(float a,float b);
+
+--------------------------
+Function overriding - when the function name are same and the signature are same but 1 in parent class and the other in child class.
+----------------
+
+Static-we can declare a method as static,variable as static.the static variable once incremented remain incremented.
+we can acess the static variable and methods without object(instance).
+----------------------------
+Abstract class- a abstract class is a class which contains a abstract method(method without body) as well as concreate method(method with body).we cannot creat instance of an abstract class.we to inhert it into a child class.we have to override all the abstract methods and creat instance for the child class.
+------------------
+Interface-it is similar to abstract class but it only contains abstract methods.multiple inheritance can be done by interface.we cannot creat instance for the interface .we to inhert it into a child class.we have to override all the abstract methods and creat instance for the child class.
+
+-----------------------------------
+Exception handling-its also called as error handling there are three types of error
+1)logical error
+2)runtime error
+3)syntax error
+we have to handle the runtime error only,by giving proper error message.
+Example-
+arithemic exception(divide a number by zero)
+inputmismatch execption(entering chracters in place of numbers)
+arrayindexoutofbond exception(the array size is 5 entering 6 in place of 5)
+
+we have 5 key words-
+1-try
+2-catch
+3-finally
+4-throws
+5-throw
+----------------
+Inheritance-its the property by which the parent class property is transfered to the child class.
+we use the key words super and extend .
+super-its used for acessing parent class variable and method
+extend-its used for acessing the parent class.
+--------------------------------
+Class-it contains variable and methods its a frame work or blue print of an object.class is a factory of object.
+
+Objects-its a representative of a class it occupies memory and has functionality its the instance of a class.
+
+-----------------------------------------
+Constructor-
+1)has the same name as the class name
+2)a constructor doesnot have a return type nor it return any value.
+3)a constructor executes automatically when an object is created for a class.
+4)when we use more than one constructor in a program its known as constructor overloading.
+There are 2 types of constructor-
+i-Default constructor
+ii-parametrized constructor
+-------------------------------------------
+Acess specifer-
+i-private- we can acess it within class only.
+ii-public-we can acess it within class and out side class and package
+iii-protected-parent class properties the child class can use
+iv-default-we can acess it within class and out side class only.
+
+------------------------------------
+Primative data type-
+i-byte=1 byte
+ii-short=2 bytes
+iii-int=4 bytes
+iv-long=8 bytes
+v-float=4 bytes
+vi-double=8 bytes
+vii-char=2 bytes
+vii-boolean=1 bit
+
+Non-primative data types-
+-------------------
+i)Array
+ii)String
+iii)Class
+iv)object
+---------------
+Wrapper class
+---------------
+1)Byte
+2)Short
+3)Integer
+4)Long
+5)Float
+6)Double
+7)Boolean
+8)Character.
+----------------
+Type casting-
+when we want to initilaze smaller memory space occupying variable into bigger memory space occupying variable we need not do type casting its done implisitly but if we want to initilaze  bigger memory space into smaller memory occupying variable we do type casting explicitly
+---------------------------
+ Default package in java is lang.
+
+------------------
+import java.util.*;
+class b
+{
+int empno,sal;
+String empname;
+void input()
+{
+Scanner ob=new Scanner(System.in);
+System.out.println("Enter employee number,employee name and salary");
+empno=ob.nextInt();
+empname=ob.next();
+sal=ob.nextInt();
+}
+void display()
+{
+System.out.println("The employee Number is "+empno);
+System.out.println("The employee Name is "+empname);
+System.out.println("The employee Salary is "+sal);
+if(sal>=10000)
+System.out.println("The employee design is officer");
+else if(sal>=7500)
+System.out.println("The employee design is supervisor");
+else if(sal>=5000)
+System.out.println("The employee design is worker");
+else
+System.out.println("The employee design is clerk");
+}
+public static void main(String h[])
+{
+b ob=new b();
+ob.input();
+ob.display();
+
+}
+}
+
+
+
+-------------------------------
+piramid:-
+----------------
+class c
+{
+public static void main(String h[])
+{
+for(int i=1;i<=5;i++)
+{
+for(int j=1;j<=5-i;j++)
+{
+System.out.print("\t");
+}
+for(int k=1;k<=2*i-1;k++)
+{
+System.out.print(i+"\t");
+}
+System.out.println();
+}
+}
+}
+
+
+				1	
+			2	2	2	
+		3	3	3	3	3	
+	4	4	4	4	4	4	4	
+5	5	5	5	5	5	5	5	5	
+
+------------------------------------
+
+Question 1
+1)Objects-its a representative of a class it occupies memory and has functionality. it is the instance of a class.It is also called as real world intity.
+
+2)short:-the range is -32768 to 32767
+
+3)/ :-it is division(5/2=2)
+% :-modulus or reminder(5%2=1)
+
+4)
+ class a
+{
+public static void main(String h[])
+{
+int a=5-20/3+9*(5%2);
+System.out.println(a);
+}
+}
+
+
+a=8;
+
+5)Type casting-
+when we want to initilaze smaller memory space occupying variable into bigger memory space occupying variable we need not do type casting its done implisitly but if we want to initilaze  bigger memory space into smaller memory occupying variable we do type casting explicitly
+
+
+Question 2:
+2) Costructor:has the name as that of the class name
+a Costructor dose not have a return type nor it returns a value
+a Costructor executes automatically when in object is created for a class
+if we use more than one constructor in a program its known as constructor overloading.
+Methods: a Method can have any name other than the class name 
+a Method has return type value 
+a Method should be called explectily by the object 
+if we use more tha one method in a program with same Method/function name but different signature it is mknown as function/Method overloading.
+
+3)
+public-we can acess it within class and out side class and package
+protected-parent class properties the child class can use it
+
+4)Static variables are those when once incremented remains incremented.
+Non-Static variables get initialized again and agian.
+
+5)
+a.return
+b.final 
+Question 3
+1)Abstract class- a abstract class is a class which contains a abstract method(method without body) as well as concreate method(method with body).we cannot creat instance of an abstract class.we to inhert it into a child class.we have to override all the abstract methods and creat instance for the child class.
+
+2) Name the following-
+a.Character,Long.
+b.lang package
+
+3) 
+class a
+{
+public static void main(String h[])
+{
+int n=50,i=10;
+while(i>=2)
+{
+System.out.println(i);
+System.out.println(n);
+i-=2;
+n++;
+}
+}
+}
+
+
+o/p:-
+10
+50
+8
+51
+6
+52
+4
+53
+2
+54
+
+
+Question 4:-
+a)5.9
+b)class a
+{
+public static void main(String h[])
+{
+double y=Math.ceil(Math.floor(80.5)) ;
+System.out.println(y);
+}
+}
+
+o/p:-80.0
+
+c)0
+
+d)-8.0
+
+Question 5:-
+
+a)3
+b)160 bits
+
+Question 6:-
+
+67,C
+
+Question 7:-
+
+class a
+{
+public static void main(String h[])
+{
+String str="First PreBoard" ;
+int n=str.length();
+System.out.println(str.startsWith(str.substring(6,n)));
+System.out.println(str.charAt(3)==str.charAt(6));
+}
+}
+
+o/p:- false,false
+
+
+
+
+--------
+import java.io.*;
+import java.util.*;
+class a
+{
+public static void main(String args[])throws IOException
+{
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+System.out.println("Enter a no.");
+int num=Integer.parseInt(br.readLine());
+String str=Integer.toString(num);
+int len=str.length();
+int occured=0,count=0;
+
+for(int i=0;i<len;i++)
+{
+occured =0;
+count=1;
+
+for(int k=i-1;k>=0;k--)
+{
+if(str.charAt(k)==str.charAt(i))
+{
+occured=1;
+break;
+}
+}
+if(occured==0)
+{
+for(int k=i+1;k<len;k++)
+{
+if(str.charAt(k)==str.charAt(i))
+{
+count++;
+}
+}
+System.out.println(str.charAt(i) +"\t" +count);
+}
+}
+}
+}
+
+-----------------
+
+
+ 
