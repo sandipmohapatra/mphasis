@@ -5,17 +5,17 @@
 
 <p>Try leaving the first input field blank:</p>
 
-<form name="myForm" action=second>
+<form name="myForm" novalidate>
 <p>Name:
 <input name="myName" ng-model="myName" required>
-<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span>
+<span style="color:red" ng-show="myForm.myName.$dirty && myForm.myName.$invalid">The name is required.</span>
 </p>
 
 <p>Address:
 <input name="myAddress" ng-model="myAddress" required>
-    <span ng-show="myForm.myAddress.$touched && myForm.myAddress.$invalid">The address is required.</span>
+    <span style="color:red" ng-show="myForm.myAddress.$dirty && myForm.myAddress.$invalid">The address is required.</span>
 </p>
-<input type="submit" value="submit">
+<input type="submit"  value="submit" ng-disabled="myForm.myName.$dirty && myForm.myName.$invalid"|| myForm.myAddress.$dirty && myForm.myAddress.$invalid">
 </form>
 
 <p>We use the ng-show directive to only show the error message if the field has been touched AND is empty.</p>
